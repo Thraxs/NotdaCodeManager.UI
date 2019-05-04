@@ -1,0 +1,46 @@
+.input-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.input-element {
+    margin-right: 25px;
+}
+
+.panel {
+    border: 1px solid rgba(0,0,0,.03);
+    box-shadow: 0 2px 2px rgba(0,0,0,.24),0 0 2px rgba(0,0,0,.12);
+    padding: 20px;
+}
+
+.code-error {
+    color: red;
+    display: block;
+    margin-top: 10px;
+}
+
+.info-element {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.info-label {
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.medal-enabled {
+    color: green;
+}
+
+.medal-disabled {
+    color: #b3b1b1;
+}
+
+.new-medal-notification {
+    display: inline-block;
+    margin-left: 10px;
+}

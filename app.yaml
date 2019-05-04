@@ -1,0 +1,18 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /
+  static_files: notdacodemanager/index.html
+  upload: notdacodemanager/index.html
+  secure: always
+
+- url: /
+  static_dir: notdacodemanager
+  secure: always
+  
+- url: /.*
+  static_dir: notdacodemanager
+  secure: always

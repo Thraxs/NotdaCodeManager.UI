@@ -7,14 +7,16 @@ import { CodeValidatorComponent } from './code-validator/code-validator.componen
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatDividerModule, MatListModule } from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatDividerModule, MatListModule, MatTabsModule, MatSelectModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MedalCalculatorComponent } from './medal-calculator/medal-calculator.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CodeValidatorComponent
+    CodeValidatorComponent,
+    MedalCalculatorComponent
   ],
   imports: [
     BrowserModule,
@@ -22,10 +24,13 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
+    MatSelectModule,
     MatButtonModule,
     MatChipsModule,
     MatDividerModule,
     MatListModule,
+    MatTabsModule,
     FormsModule,
     HttpClientModule
   ],

@@ -1,13 +1,13 @@
 import { Rank } from './rank';
 import { Medal } from './medal';
-import { Mos } from './mos';
+import { MosType } from './mosType';
 
 export class PlayerData {
     name: string;
     experience: number;
     rank: Rank;
     medals: Medal[];
-    mos: Mos;
+    mos: MosType;
     readiness: number;
 
     constructor(data: any) {    

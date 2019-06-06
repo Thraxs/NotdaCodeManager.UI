@@ -1,4 +1,4 @@
-export enum Mos {
+export enum MosType {
     None = 0,
     RiflemanMachineGunnerIul = 1,
     NavyCorpsman = 2,

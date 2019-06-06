@@ -1,0 +1,34 @@
+<div class="panel">
+  <form class="input-form">
+    <mat-form-field class="input-element">
+        <input name="startingPlayers" matInput placeholder="Starting players" type="number" value="0">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Class</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let class of classList" [value]="class.type">
+          {{class.displayName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="input-element">
+      <input name="playerKills" matInput placeholder="Player kills" type="number" value="0">
+    </mat-form-field>
+    <mat-form-field class="input-element">
+      <input name="totalHits" matInput placeholder="Total hits" type="number" value="0">
+    </mat-form-field>
+    <mat-form-field class="input-element">
+      <input name="totalAilments" matInput placeholder="Total ailments" type="number" value="0">
+    </mat-form-field>
+    <mat-form-field class="input-element">
+      <mat-label>Completed missions</mat-label>
+      <mat-select multiple>
+        <mat-option *ngFor="let mission of missionList" [value]="mission.type">
+          {{mission.displayName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox name="gameCompleted">Game completed successfully?</mat-checkbox>
+  </form>
+  <span *ngIf="loaded && !validCode" class="code-error">Invalid biometric id</span>
+</div>

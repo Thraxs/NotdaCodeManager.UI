@@ -1,2 +1,10 @@
 <h1>{{ title }}</h1>
-<app-code-validator></app-code-validator>
+
+<mat-tab-group [backgroundColor]="accent" dynamicHeight="true" animationDuration="0ms">
+    <mat-tab label="Code Viewer">
+        <app-code-validator></app-code-validator>
+    </mat-tab>
+    <mat-tab label="Medal Calculator">
+        <app-medal-calculator></app-medal-calculator>
+    </mat-tab>
+</mat-tab-group>

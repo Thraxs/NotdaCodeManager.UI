@@ -7,7 +7,7 @@ import { CodeValidatorComponent } from './code-validator/code-validator.componen
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-import {MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatDividerModule, MatListModule, MatTabsModule, MatSelectModule, MatCheckbox, MatCheckboxModule } from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatButtonModule, MatChipsModule, MatDividerModule, MatListModule, MatTabsModule, MatSelectModule, MatCheckbox, MatCheckboxModule, MatTableModule, MatTooltip, MatTooltipModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MedalCalculatorComponent } from './medal-calculator/medal-calculator.component';
@@ -31,6 +31,7 @@ import { MedalCalculatorComponent } from './medal-calculator/medal-calculator.co
     MatDividerModule,
     MatListModule,
     MatTabsModule,
+    MatTooltipModule,
     FormsModule,
     HttpClientModule
   ],

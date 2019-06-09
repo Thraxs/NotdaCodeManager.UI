@@ -1,34 +1,58 @@
 <div class="panel">
   <form class="input-form">
     <mat-form-field class="input-element">
-        <input name="startingPlayers" matInput placeholder="Starting players" type="number" value="0">
+        <input name="startingPlayers" matInput placeholder="Starting players" type="number" value="0" [(ngModel)]="startingPlayers">
     </mat-form-field>
     <mat-form-field>
       <mat-label>Class</mat-label>
-      <mat-select>
+      <mat-select [(value)]="playerClass">
         <mat-option *ngFor="let class of classList" [value]="class.type">
           {{class.displayName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="input-element">
-      <input name="playerKills" matInput placeholder="Player kills" type="number" value="0">
+      <input name="playerKills" matInput placeholder="Player kills" type="number" value="0" [(ngModel)]="playerKills">
     </mat-form-field>
     <mat-form-field class="input-element">
-      <input name="totalHits" matInput placeholder="Total hits" type="number" value="0">
+      <input name="playerHits" matInput placeholder="Player hits" type="number" value="0" [(ngModel)]="playerHits">
     </mat-form-field>
     <mat-form-field class="input-element">
-      <input name="totalAilments" matInput placeholder="Total ailments" type="number" value="0">
+      <input name="totalAilments" matInput placeholder="Total ailments" type="number" value="0" [(ngModel)]="totalAilments">
     </mat-form-field>
     <mat-form-field class="input-element">
       <mat-label>Completed missions</mat-label>
-      <mat-select multiple>
+      <mat-select multiple [(value)]="completedMissions">
         <mat-option *ngFor="let mission of missionList" [value]="mission.type">
           {{mission.displayName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <mat-checkbox name="gameCompleted">Game completed successfully?</mat-checkbox>
+    <mat-form-field>
+      <mat-label>Highest wave reached without casualties</mat-label>
+      <mat-select [(value)]="highestWave">
+        <mat-option *ngFor="let wave of waveList" [value]="wave.type">
+          {{wave.displayName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-checkbox name="gameCompleted" [(ngModel)]="gameCompleted">Game completed successfully?</mat-checkbox>
+    <button (click)="calculatePoints()" mat-raised-button color="primary">Calculate</button>
   </form>
-  <span *ngIf="loaded && !validCode" class="code-error">Invalid biometric id</span>
+</div>
+
+<div class="panel" *ngIf="resultsDisplayed">
+  <mat-list>
+    <mat-list-item *ngFor="let medalResult of results">
+      <div>
+          <span class="{{medalResult.pointGained ? 'point-gained' : 'point-lost'}}">{{medalResult.displayName}}</span>
+          <mat-chip-list class="medal-result-chip" >
+              <mat-chip color="accent" class="medal-result-chip-gained" selected *ngIf="medalResult.pointGained">Point gained</mat-chip>
+              <mat-chip color="accent" class="medal-result-chip-lost" selected 
+                *ngIf="!medalResult.pointGained" matTooltip="{{medalResult.chance}}% chance of losing a point"
+              >?</mat-chip>
+          </mat-chip-list>
+      </div>
+    </mat-list-item>
+  </mat-list>
 </div>

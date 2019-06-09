@@ -7,6 +7,9 @@ export class KeyWave {
     constructor(waveType: string) {
         this.type = +waveType;
         switch (this.type) {
+            case KeyWaveType.None:
+                this.displayName = "None";
+                break;
             case KeyWaveType.Wave7:
                 this.displayName = "Search Ravenholm / Dark Clouds"; 
                 break;

@@ -1,18 +1,16 @@
 import { MedalType } from './medalType';
-import { MedalResult } from './medalResult';
-import { CalculatorInput } from './calculatorInput';
 
 export class Medal {
     type: MedalType;
+    displayName: string;
     granted: boolean;
     points: number;
-
-    name: string;
 
     constructor(data: any) {
         this.type = data.type;
         this.granted = data.granted;
         this.points = data.points;
+        this.displayName = this.getName();
     }
 
     getName() : string {
@@ -30,60 +28,5 @@ export class Medal {
             case MedalType.DrillInstructor: return "Drill Instructor Ribbon";
             default: return "Error";
         }
-    }
-
-    calculatePoint(input: CalculatorInput) : MedalResult {
-        let result: MedalResult;
-        switch (+this.type) {
-            case MedalType.CorpsCommendation:
-                if ((input.effectiveKill >= 225 && input.killHitRatio > 7.0 ) || input.completedMissions > 3)
-                    result = new MedalResult(true, 0);
-                else 
-                    result = new MedalResult(false, 14.3);
-                break;
-            case MedalType.BronzeStar:
-                if ((input.effectiveKill >= 300 && input.killHitRatio > 10.0) || input.completedMissions > 3)
-                    result = new MedalResult(true, 0);
-                else
-                    result = new MedalResult(false, 16.7);
-                break;
-            case MedalType.Heroism:
-                if (input.effectiveKill >= 350 && input.killHitRatio > 14.0 && input.completedMissions > 0)
-                    result = new MedalResult(true, 0);
-                else
-                    result = new MedalResult(false, 20);
-                break;
-            case MedalType.SilverStar:
-                if (input.effectiveKill >= 400 && input.killHitRatio > 15.0 && input.completedMissions > 1)
-                    result = new MedalResult(true, 0);
-                else
-                    result = new MedalResult(false, 20);
-                break;
-            case MedalType.NavyCross:
-                if (input.effectiveKill >= 425 && input.killHitRatio > 16.0 && input.completedMissions > 2)
-                    result = new MedalResult(true, 0);
-                else
-                    result = new MedalResult(false, 20);
-                break;
-            case MedalType.ArmedCommendation:
-                
-                break;
-            case MedalType.Meritorious:
-
-                break;
-            case MedalType.SuperiorService:
-
-                break;
-            case MedalType.Distinguished:
-
-                break;
-            case MedalType.Honor:
-
-                break;
-            case MedalType.DrillInstructor:
-
-                break;
-        }
-        return result;
     }
 }

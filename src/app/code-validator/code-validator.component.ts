@@ -9,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./code-validator.component.scss']
 })
 export class CodeValidatorComponent implements OnInit {
+  //User input
   @Input() name: string;
   @Input() code: string;
 
+  //View status
   loaded: boolean;
   playerData: PlayerData;
   validCode: boolean;
@@ -20,8 +22,7 @@ export class CodeValidatorComponent implements OnInit {
     this.loaded = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   validateCode(): void {
     if (this.name == null || this.code == null || this.name.length == 0 || this.code.length == 0){
@@ -38,5 +39,4 @@ export class CodeValidatorComponent implements OnInit {
     this.playerData = new PlayerData(data);
     this.loaded = true;
   }
-
 }

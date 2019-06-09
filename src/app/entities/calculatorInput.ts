@@ -1,4 +1,5 @@
 import { ClassType } from './classType';
+import { KeyWaveType } from './KeyWaveType';
 
 export class CalculatorInput {
     startingPlayers: number;
@@ -8,12 +9,13 @@ export class CalculatorInput {
     totalAilmentsInitial: number;
     completedMissions: number;
     gameCompleted: boolean;
+    highestWaveReached: KeyWaveType;
 
     effectiveKill: number;
     killHitRatio: number;
     totalAilments: number;
 
-    constructor(players: number, pClass: ClassType, kills: number, hits: number, ailments: number, missions: number, completed: boolean) {
+    constructor(players: number, pClass: ClassType, kills: number, hits: number, ailments: number, missions: number, completed: boolean, keyWave: KeyWaveType) {
         this.startingPlayers = players;
         this.playerClass = pClass;
         this.playerKills = kills;
@@ -21,9 +23,11 @@ export class CalculatorInput {
         this.totalAilmentsInitial = ailments;
         this.completedMissions = missions;
         this.gameCompleted = completed;
+        this.highestWaveReached = keyWave;
 
         this.effectiveKill = (this.playerKills * this.getKillFactor()) * (1 + (this.completedMissions / 17));
         this.killHitRatio = this.effectiveKill / (this.playerHits + 0.1);
+        this.totalAilments = this.totalAilmentsInitial;
         if (this.gameCompleted) {
             this.killHitRatio = this.killHitRatio * 1.2;
             this.effectiveKill = this.effectiveKill * 1.1;

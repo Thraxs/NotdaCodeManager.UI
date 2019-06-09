@@ -5,3 +5,30 @@ form {
 mat-form-field {
     display: block;
 }
+
+button {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.point-lost {
+    color: #b3b1b1;
+}
+
+.medal-result-chip {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.medal-result-chip-gained {
+    padding-bottom: 1px;
+    padding-top: 1px;
+    background-color: #0b9247 !important;
+}
+
+.medal-result-chip-lost {
+    padding-bottom: 1px;
+    padding-top: 1px;
+    background-color: #f39696 !important;
+}

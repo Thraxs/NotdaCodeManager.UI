@@ -37,7 +37,7 @@
     <mat-list>
         <mat-list-item *ngFor="let medal of playerData.medals">
           <div class="{{(medal.granted || medal.points >= 6) ? 'medal-enabled' : 'medal-disabled'}}">
-              <span>{{medal.getName()}}</span>
+              <span>{{medal.displayName}}</span>
               <span *ngIf="medal.points < 6"> ({{medal.points}} / 6)</span>
               <mat-chip-list class="new-medal-notification" *ngIf="medal.points == 6">
                   <mat-chip color="accent" selected>New medal!</mat-chip>
@@ -47,4 +47,3 @@
     </mat-list>
   </div>
 </div>
-

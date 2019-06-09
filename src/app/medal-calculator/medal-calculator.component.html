@@ -47,7 +47,9 @@
       <div>
           <span class="{{medalResult.pointGained ? 'point-gained' : 'point-lost'}}">{{medalResult.displayName}}</span>
           <mat-chip-list class="medal-result-chip" >
-              <mat-chip color="accent" class="medal-result-chip-gained" selected *ngIf="medalResult.pointGained">Point gained</mat-chip>
+              <mat-chip color="accent" class="medal-result-chip-gained" selected *ngIf="medalResult.pointGained">
+                Point gained ({{medalResult.chance}}%)
+              </mat-chip>
               <mat-chip color="accent" class="medal-result-chip-lost" selected 
                 *ngIf="!medalResult.pointGained" matTooltip="{{medalResult.chance}}% chance of losing a point"
               >?</mat-chip>

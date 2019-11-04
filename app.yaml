@@ -7,15 +7,11 @@ manual_scaling:
 
 handlers:
 
-- url: /
+- url: /(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+  static_files: notdacodemanager/\1
+  upload: notdacodemanager/(.*\.(css|eot|gz|html|ico|js|map|png|svg|ttf|woff|woff2))
+
+- url: /.*
   static_files: notdacodemanager/index.html
   upload: notdacodemanager/index.html
-  secure: always
-
-- url: /
-  static_dir: notdacodemanager
-  secure: always
-  
-- url: /.*
-  static_dir: notdacodemanager
   secure: always

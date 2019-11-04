@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CodeService } from '../services/codeService';
 import { PlayerData } from '../entities/playerData';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-code-validator',
@@ -18,11 +19,28 @@ export class CodeValidatorComponent implements OnInit {
   playerData: PlayerData;
   validCode: boolean;
 
+  private routeSubscription: Subscription;
+
   constructor(private codeService: CodeService, private route: ActivatedRoute) {
     this.loaded = false;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.routeSubscription = this.route.params.subscribe(params => {
+      const name = params['bioId'];
+      const code = params['saveCode'];
+      
+      if (name && code) {
+        this.name = name;
+        this.code = code;
+        this.validateCode();
+      }
+   });
+  }
+
+  ngOnDestroy() {
+    this.routeSubscription.unsubscribe();
+  }
 
   validateCode(): void {
     if (this.name == null || this.code == null || this.name.length == 0 || this.code.length == 0){

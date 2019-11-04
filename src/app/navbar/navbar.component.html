@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <button mat-button routerLink="/">  
+    <img class="home" src="../../assets/usmc-icon.png">
+  </button>
+  <div fxLayout="row" fxShow="false" fxShow.gt-sm>
+      <button mat-button routerLink="/code">Code viewer</button>
+      <button mat-button routerLink="/calc">Medal Calculator</button>
+  </div>
+  <button mat-button [mat-menu-trigger-for]="menu" fxHide="false" fxHide.gt-sm>
+     <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+<mat-menu x-position="before" #menu="matMenu">
+    <button mat-menu-item routerLink="/code">Code viewer</button>
+    <button mat-menu-item routerLink="/calc">Medal Calculator</button>
+</mat-menu>

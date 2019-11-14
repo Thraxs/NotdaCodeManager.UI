@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CodeService } from '../services/codeService';
 import { PlayerData } from '../entities/playerData';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { ValidationResponse } from '../model/validationResponse';
 
 @Component({
   selector: 'app-code-validator',
@@ -48,8 +49,10 @@ export class CodeValidatorComponent implements OnInit {
       this.loaded = true;
       return;
     }
-    this.codeService.validateCode(this.name, this.code)
-      .subscribe(response => this.updateDisplay(response.validCode, response.playerData));
+    this.codeService.validateCode(this.name, this.code).subscribe((response: ValidationResponse) => {
+      var codeResult = response.result[0];
+      this.updateDisplay(codeResult.validCode, codeResult.playerData);
+    });
   }
 
   updateDisplay(valid: boolean, data: PlayerData): void {

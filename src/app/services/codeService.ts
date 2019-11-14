@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CodeResult } from '../entities/codeResult';
 import { Injectable } from '@angular/core';
-import { ValidationResponse } from '../entities/validationResponse';
 import {map} from 'rxjs/operators';
-import { PlayerData } from '../entities/playerData';
+import { ValidationResponse } from '../model/validationResponse';
+import { ValidationResponseEntry } from '../model/validationResponseEntry';
+import { ValidationRequest } from '../model/validationRequest';
+import { ValidationRequestEntry } from '../model/validationRequestEntry';
 
 @Injectable({ providedIn: 'root' })
 export class CodeService {
@@ -16,9 +17,11 @@ export class CodeService {
     ) {}
 
     validateCode(name: string, code: string): Observable<ValidationResponse> {
-        var url = `${this.codeServiceUrl}/DecodeFunction?name=${name}&code=${code}`;
-        return this.http.get<ValidationResponse>(url).pipe(
-            map(response => new ValidationResponse(response))
-        )
+        var url = `${this.codeServiceUrl}/DecodeFunction`;
+        const body = new ValidationRequest();
+        body.codes.push(new ValidationRequestEntry(name, code));
+
+
+        return this.http.post<ValidationResponse>(url, body);
     }
 }
